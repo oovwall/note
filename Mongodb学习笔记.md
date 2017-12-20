@@ -19,8 +19,10 @@ mk \data\db
 
 3. 用MongoDB Compass Community连接MongoDB
 
+> 为了方便起见，不用每次在命令行输入一大截的mongod.exe所在的文件的路径，把`C:\Program Files\MongoDB\Server\3.6\bin\`加入环境变量，这样每次启动MongoDB只需要在命令行直接输入：`mongod`即可
 
-## MongoDB连接失败解决办法
+
+## Mac MongoDB连接失败解决办法
 #### Failed to connect to 127.0.0.1:27017, in(checking socket for error after poll), reason: Connection refused
 
 ```powershell

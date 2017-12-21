@@ -35,8 +35,51 @@ $ mongo
 
 ### MongoDB Shell下操作数据库
 ```sql
-> use DATABASE_NAME			-- 如果数据库不存在则创建数据库，否则切换到指定数据库
-> db						-- 查看当前数据库名
-> db.dropDatabase()			-- 删除数据库
-> show dbs					-- 查看所有数据库
+> use DATABASE_NAME         -- 如果数据库不存在则创建数据库，否则切换到指定数据库
+> db                        -- 查看当前数据库名
+> db.dropDatabase()         -- 删除数据库
+> show dbs                  -- 查看所有数据库
+
+> db.COLLECTION_NAME.find()             -- 查看集合
+> db.COLLECTION_NAME.find().pretty()    -- 查看集合
+> db.COLLECTION_NAME.drop()             -- 删除集合
+```
+
+#### 插入文档
+MongoDB 使用 insert() 或 save() 方法向集合中插入文档，语法如下：
+```sql
+> db.COLLECTION_NAME.insert(document)
+```
+插入文档也可以使用 db.COLLECTION_NAME.save(document) 命令。如果不指定 _id 字段 save() 方法类似于 insert() 方法。如果指定 _id 字段，则会更新该 _id 的数据。
+
+#### 查询文档
+MongoDB 查询数据的语法格式如下：
+```sql
+> db.COLLECTION_NAME(query, projection)
+> -- query ：可选，使用查询操作符指定查询条件
+> -- projection ：可选，使用投影操作符指定返回的键。查询时返回文档中所有键值， 只需省略该参数即可（默认省略）。
+```
+**`MongoDB 与 RDBMS Where 语句比较`**
+
+|   操作  |   格式  |   范例  |   RDBMS中的类似语句     |
+| ---- | ---- | ---- | ---- |
+|  等于 |  {<key>:<value>} |  db.col.find({"by":"菜鸟教程"}).pretty() |   where by = '菜鸟教程'    |
+|  小于 |  {<key>:{$lt:<value>}} | db.col.find({"likes":{$lt:50}}).pretty() |   where likes < 50   |
+|  小于或等于 |  {<key>:{$lte:<value>}} | db.col.find({"likes":{$lte:50}}).pretty() |   where likes <= 50   |
+|  大于 |  {<key>:{$gt:<value>}} | db.col.find({"likes":{$gt:50}}).pretty() |   where likes > 50   |
+|  不等于 |  {<key>:{$ne:<value>}} | db.col.find({"likes":{$ne:50}}).pretty() |   where likes != 50   |
+
+#### 删除文档
+```sql
+db.collection.remove(
+   <query>,
+   {
+     justOne: <boolean>,
+     writeConcern: <document>
+   }
+)
+
+> -- query ：（可选）删除的文档的条件。
+> -- justOne : （可选）如果设为 true 或 1，则只删除一个文档。
+> -- writeConcern :（可选）抛出异常的级别。
 ```

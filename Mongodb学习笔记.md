@@ -71,7 +71,7 @@ MongoDB 查询数据的语法格式如下：
 
 #### 删除文档
 ```sql
-db.collection.remove(
+db.COLLECTION_NAME.remove(
    <query>,
    {
      justOne: <boolean>,

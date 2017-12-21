@@ -26,6 +26,15 @@ npm i -g supervisor
 app.set('views', path.join(__dirname, 'views'))
 // 设置模板引擎
 app.set('view engine', 'ejs')
+
+// 设置静态文件目录
+app.use(express.static(path.join(__dirname, 'public')))
+
+// 设置模板全局常量
+app.locals.blog = {
+  title: pkg.name,
+  description: pkg.description
+}
 ```
 
 ```javascript
@@ -38,7 +47,7 @@ res.render('posts', {
 #### includes
 
 ```js
-<%- include('haeder') %>
+<%- include('header') %>
 ```
 
 ### ESLint

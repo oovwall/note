@@ -102,6 +102,17 @@ router.get('/create', checkLogin, (req, res, next) => {
 })
 ```
 
+### 表单提交
+form 表单要添加 `enctype="multipart/form-data"` 属性才能上传文件
+
+接受普通文本字段：
+
+`req.fields.NAME`     NAME为form表单的字段name属性
+
+接受文件字段：
+
+`req.files.NAME.path`       path为上传后文件的路径
+
 
 ## express 学习
 console.log() 技巧

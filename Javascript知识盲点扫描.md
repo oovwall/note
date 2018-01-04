@@ -12,6 +12,45 @@ function process (values) {
 }
 ```
 
+## DOM
+定义：DOM（文档对象模型）是针对HTML和XML文档的一个API（应用程序接口）。
+
+功能：DOM描绘了一个层次化的节点树，允许开发人员添加、移除和修改页面的某一部分。
+
+<html>称之为文档元素。每个文档只有一个文档元素，在HTML页面中，文档元素始终都是<html>元素。
+
+### Document类型
+```javascript
+document.documentElement          // <html>元素
+document.body                     // <body>元素
+document.title                    // 网页标题
+
+document.URL                      // 取得完整的URL
+document.domain                   // 取得域名，可以设置主域名
+document.referrer                 // 取得来源页面的URL
+
+document.anchors                  // 包含文档中所有带name特性的<a>元素
+document.applets                  // 包含文档中所有的<applet>元素
+document.forms                    // 包含文档中所有的<form>元素，document.getElementsByTagName('form')结果相同
+document.images                   // 包含文档中所有的<img>元素，document.getElementsByTagName('img')结果相同
+document.links                    // 包含文档中所有带href特性的<a>元素
+```
+
+#### 查找元素
+元素的name属性查找
+```html
+<img src="myimage.gif" name="myImage" alt="">
+```
+```javascript
+var images = document.getElementsByTagName('img')
+
+// 只会取得一项，并不会返回HTMLCollection
+var myImage = images.namedItem('myImage')
+// 或
+var myImage = images['myImage']
+```
+
+
 ## 事件
 ### 事件冒泡
 事件由最具体的元素接收，然后逐级向上传播到不具体的节点（文档）。

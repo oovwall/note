@@ -50,6 +50,60 @@ var myImage = images.namedItem('myImage')
 var myImage = images['myImage']
 ```
 
+### Element类型
+```html
+<div id="myDiv" class="bd" title="Body text" lang="en" dir="ltr"></div>
+```
+```javascript
+// HTML元素的标准特性（可赋值修改）
+var div = document.getElementById('myDiv')
+div.id                      // 'myDiv'
+div.className               // 'bd'
+div.title                   // 'Body text'
+div.lang                    // 'en'
+div.dir                     // 'ltr'
+
+// 取得特性
+div.getAttribute('id')                      // 'myDiv'
+div.getAttribute('class')                   // 'bd'
+div.getAttribute('title')                   // 'Body text'
+div.getAttribute('lang')                    // 'en'
+div.getAttribute('dir')                     // 'ltr'
+div.getAttribute('data-my-option')          // 可以取得HTML元素自定义特性，不区分大小写
+
+// 设置特性
+div.setAttribute('id', 'someOtherId')
+div.setAttribute('class', 'ft')
+div.setAttribute('title', 'Some other text')
+div.setAttribute('lang', 'fr')
+div.setAttribute('dir', 'rtl')
+
+// 删除特性
+div.removeAttribute('class')
+```
+
+创建元素
+```javascript
+var div = document.createElement('div')
+div.id = 'myNewDiv'
+div.className = 'box'
+```
+
+### Text类型
+创建一个完整的<div>元素并添加到页面
+```javascript
+var div = document.createElement('div')
+var textNode = document.createTextNode('Hello world!')
+div.appendChild(textNode)
+document.body.appendChild(div)
+```
+### DocumentFragment类型
+```javascript
+var fragment = document.createDocumentFragment()
+var textNode = document.createTextNode('Hello world!')
+fragment.appendChild(textNode)
+document.body.appendChild(fragment)
+```
 
 ## 事件
 ### 事件冒泡

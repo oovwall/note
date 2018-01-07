@@ -1,5 +1,4 @@
-[toc]
-
+[TOC]
 # Javascript知识盲点扫描
 
 ## Error

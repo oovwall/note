@@ -46,7 +46,7 @@ res.render('posts', {
 
 #### includes
 
-```js
+```ejs
 <%- include('header') %>
 ```
 
@@ -135,8 +135,8 @@ app.locals.blog = {
 
 ## MAC清除进程方法
 ```bash
-lsof -i:3001			# 查看什么进程占用端口
-kill PID				# 杀掉占用端口的PID进程号
+lsof -i:3001            # 查看什么进程占用端口
+kill PID                # 杀掉占用端口的PID进程号
 ```
 
 

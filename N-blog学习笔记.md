@@ -109,7 +109,24 @@ console.log() 技巧
 ```javascript
 console.log('Example app listening at http://%s:%s', host, port);
 ```
+### express应用的本地变量（全局变量）设置
+```javascript
+// 引用的时侯直接用title变量即可
+app.locals.title = 'My App';
+app.locals.email = 'me@myapp.com';
 
+// 例：
+app.locals.blog = {
+  title: pkg.name,
+  description: pkg.description
+}
+```
+
+## MAC清除进程方法
+```bash
+lsof -i:3001			# 查看什么进程占用端口
+kill PID				# 杀掉占用端口的PID进程号
+```
 
 
 

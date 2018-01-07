@@ -148,3 +148,46 @@ btn.attachEvent('onclick', function () {
 > 注意：
 > 1. 在使用attachEvent()方法的情况下，事件处理程序会在全局作用域中运行。因此`this === window`。
 > 2. 与DOM方法不同的是，这些事件处理程序不是以添加它们的顺序执行，而是以相反的顺序被触发。
+
+## ES6 Promise
+> 所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步的操作）结果。
+
+示例 
+```javascript
+let promise = new Promise((resolve, reject) => {
+  // 构造函数中的参数是一个函数，该函数生成成功或失败的状态，由实例promise去设定成功或失败的回调函数
+
+  console.log('Promise')
+  resolve()     // 如果替换成reject()则输出failure
+  
+})
+
+promise.then(() => {
+  console.log('success')
+}, () => {
+  console.log('failure')
+})
+
+console.log('HI')
+```
+
+一般来说，不要在then方法里面定义 Reject 状态的回调函数（即then的第二个参数），总是使用catch方法。
+```javascript
+// bad
+promise
+  .then(function(data) {
+    // success
+  }, function(err) {
+    // error
+  });
+
+// good
+promise
+  .then(function(data) { //cb
+    // success
+  })
+  .catch(function(err) {
+    // error
+  });
+```
+一般总是建议，Promise 对象后面要跟catch方法，这样可以处理 Promise 内部发生的错误。catch方法返回的还是一个 Promise 对象，因此后面还可以接着调用then方法。

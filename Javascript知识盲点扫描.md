@@ -192,3 +192,61 @@ promise
   });
 ```
 一般总是建议，Promise 对象后面要跟catch方法，这样可以处理 Promise 内部发生的错误。catch方法返回的还是一个 Promise 对象，因此后面还可以接着调用then方法。
+
+## CommonJS规范
+CommonJS每个文件就是一个模块，有自己的作用域。在一个文件里面定义的变量、函数、类，都是私有的，对其他文件不可见。
+
+CommonJS规范规定，每个模块内部，`module`变量代表当前模块。这个变量是一个对象，它的`exports`属性（即`module.exports`）是对外的接口。加载某个模块，其实是加载该模块的`module.exports`属性。
+```javascript
+var x = 5;
+var addX = function (value) {
+  return value + x;
+};
+
+// 通过module.exports输出变量x和函数addX。
+module.exports.x = x;
+module.exports.addX = addX;
+```
+CommonJS模块的特点:
+1. 所有代码都运行在模块作用域，不会污染全局作用域。
+2. 模块可以多次加载，但是只会在第一次加载时运行一次，然后运行结果就被缓存了，以后再加载，就直接读取缓存结果。要想让模块再次运行，必须清除缓存。
+3. 模块加载的顺序，按照其在代码中出现的顺序。
+
+### module对象
+
+> * module.id 模块的识别符，通常是带有绝对路径的模块文件名。
+> * module.filename 模块的文件名，带有绝对路径。
+> * module.loaded 返回一个布尔值，表示模块是否已经完成加载。
+> * module.parent 返回一个对象，表示调用该模块的模块。
+> * module.children 返回一个数组，表示该模块要用到的其他模块。
+> * module.exports 表示模块对外输出的值。 
+
+#### module.exports属性
+module.exports属性表示当前模块对外输出的接口，其他文件加载该模块，实际上就是读取module.exports变量。
+
+#### exports变量
+对外输出模块接口时，可以向exports对象添加方法。
+```javascript
+exports.area = function (r) {
+  return Math.PI * r * r;
+};
+
+exports.circumference = function (r) {
+  return 2 * Math.PI * r;
+};
+
+// 不能和module.exports混用，因为module.exports会被重新赋值。
+```
+~~module.exports = function (x){ console.log(x);};~~
+
+### require命令
+#### 删除模块缓存
+```javascript
+// 删除指定模块的缓存
+delete require.cache[moduleName];
+
+// 删除所有模块的缓存
+Object.keys(require.cache).forEach(function(key) {
+  delete require.cache[key];
+})
+```

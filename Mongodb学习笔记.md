@@ -28,6 +28,14 @@ mk \data\db
 ```powershell
 brew services start mongodb
 ```
+
+
+## 命令行操作MongoDB
+### 启动MongoDB
+```powershell
+$ mongod
+```
+
 ### 进入MongoDB Shell
 ```powershell
 $ mongo
@@ -83,3 +91,6 @@ db.COLLECTION_NAME.remove(
 > -- justOne : （可选）如果设为 true 或 1，则只删除一个文档。
 > -- writeConcern :（可选）抛出异常的级别。
 ```
+
+## mongodb
+

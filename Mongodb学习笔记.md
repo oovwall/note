@@ -93,4 +93,166 @@ db.COLLECTION_NAME.remove(
 ```
 
 ## mongodb
+### Node.js连接MongoDB & 操作方法
+
+连接范例
+```javascript
+const MongoClient = require('mongodb').MongoClient
+const assert = require('assert')
+
+// Connection URL
+const url = 'mongodb://localhost:27017'
+
+// Database Name
+const dbName = 'myjavascript'
+
+// Use connect method to connect to the server
+MongoClient.connect(url, function (err, client) {
+  assert.equal(null, err)
+  console.log('成功连接到MongoDB服务器')
+
+  const db = client.db(dbName)
+
+  // 插入记录
+  // insertDocuments(db, function (result) {
+  //   console.log(result)
+  // })
+
+  // 查找记录
+  // findDocuments(db, function (docs) {
+  //   console.log(docs)
+  // })
+
+  // 更新单条记录
+  // updateDocument(db, function (result) {
+  //   console.log(result)
+  // })
+
+  // 更新多条记录
+  // updateDocuments(db, function (result) {
+  //   console.log(result)
+  // })
+
+  // 删除单条记录
+  // removeDocument(db, function (result) {
+  //   console.log(result)
+  // })
+
+  // 删除多条记录
+  // removeDocuments(db, function (result) {
+  //   console.log(result)
+  // })
+
+  client.close()
+})
+```
+
+操作方法
+```javascript
+/**
+ * 插入记录
+ * @param db
+ */
+const insertDocuments = function (db, callback) {
+  // 获取名为documents的Collection
+  const collection = db.collection('documents')
+
+  collection.insertMany([
+    {a: 1, b: 4}, {a: 2, c: 5}, {a: 3, d: 6}
+  ], function (err, result) {
+
+    // 测试结果
+    assert.equal(err, null)
+    assert.equal(3, result.result.n)
+    assert.equal(3, result.ops.length)
+    console.log('Inserted 3 documents into the collection')
+    callback(result)
+  })
+}
+
+/**
+ * 查找记录
+ * @param db
+ * @param callback
+ */
+const findDocuments = function (db, callback) {
+  // 获取名为documents的Collection
+  const collection = db.collection('documents')
+
+  collection.find({ a: 1}).toArray(function (err, docs) {
+    assert.equal(err, null)
+    console.log('Found the following records')
+    callback(docs)
+  })
+}
+
+/**
+ * 更新单条记录
+ * @param db
+ * @param callback
+ */
+const updateDocument = function (db, callback) {
+  // 获取名为documents的Collection
+  const collection = db.collection('documents')
+
+  collection.updateOne({ a: 1 }
+    , { $set: { b: 2 } }, function (err, result) {
+      assert.equal(err, null)
+      assert.equal(1, result.result.n)
+      console.log('Updated the document with the field a equal to 2')
+      callback(result)
+    })
+}
+
+/**
+ * 更新多条记录
+ * @param db
+ * @param callback
+ */
+const updateDocuments = function (db, callback) {
+  // 获取名为documents的Collection
+  const collection = db.collection('documents')
+
+  collection.updateMany({ a: 1 }
+    , { $set: { b: 5 } }, function (err, result) {
+      assert.equal(err, null)
+      console.log('Updated the document with the field a equal to 5')
+      callback(result)
+    })
+}
+
+/**
+ * 删除单条记录
+ * @param db
+ * @param callback
+ */
+const removeDocument = function (db, callback) {
+  // 获取名为documents的Collection
+  const collection = db.collection('documents')
+
+  collection.deleteOne({ a: 1 }, function (err, result) {
+    assert.equal(err, null)
+    assert.equal(1, result.result.n)
+    console.log('已删除指定Collection中符合条件的第一条字段')
+    callback(result)
+  })
+}
+
+/**
+ * 删除多条记录
+ * @param db
+ * @param callback
+ */
+const removeDocuments = function (db, callback) {
+  // 获取名为documents的Collection
+  const collection = db.collection('documents')
+
+  // 如果第一个参数为空对象，则删除所有记录
+  collection.deleteMany({ a: 1 }, function (err, result) {
+    assert.equal(err, null)
+    console.log('已删除指定Collection中符合条件的所有字段')
+    callback(result)
+  })
+}
+```
 

@@ -1,5 +1,6 @@
-# CentOS基础命令大全
-## 关机 (系统的关机、重启以及登出 ) 的命令
+# CentOS基本
+## CentOS基础命令大全
+### 关机 (系统的关机、重启以及登出 ) 的命令
 
 shutdown -h now 关闭系统(1)
 
@@ -17,7 +18,7 @@ reboot 重启(2)
 
 logout 注销
 
-## 查看系统信息的命令
+### 查看系统信息的命令
 
 arch 显示机器的处理器架构(1)
 
@@ -57,7 +58,7 @@ date 041217002007.00 设置日期和时间 - 月日时分年.秒
 
 clock -w 将时间修改保存到 BIOS
 
-## 文件和目录操作命令
+### 文件和目录操作命令
 
 cd /home 进入 '/ home' 目录'
 
@@ -111,7 +112,7 @@ ln file1 lnk1 创建一个指向文件或目录的物理链接
 
 touch file1 创建一个文件
 
-## 文件搜索命令
+### 文件搜索命令
 
 find / -name file1 从 '/' 开始进入根文件系统搜索文件和目录
 
@@ -129,7 +130,7 @@ whereis file 显示一个二进制文件、源码或man的位置
 
 which file 显示一个二进制文件或可执行文件的完整路径
 
-## 查看文件内容
+### 查看文件内容
 
 cat file1 从第一个字节开始正向查看文件的内容
 
@@ -167,7 +168,7 @@ mount /dev/sda1 /mnt/usbdisk 挂载一个usb 捷盘或闪存设备
 
 mount -t smbfs -o username=user,password=pass //WinClient/share /mnt/share 挂载一个windows网络共享
 
-## 磁盘空间操作的命令
+### 磁盘空间操作的命令
 
 df -h 显示已经挂载的分区列表
 
@@ -177,7 +178,7 @@ du -sh dir1 估算目录 'dir1' 已经使用的磁盘空间'
 
 du -sk * | sort -rn 以容量大小为依据依次显示文件和目录的大小
 
-## 用户和群组相关命令
+### 用户和群组相关命令
 
 groupadd group_name 创建一个新用户组
 
@@ -223,7 +224,7 @@ chmod o+t /home/public 设置一个文件的 STIKY 位 - 只允许合法所有�
 
 chmod o-t /home/public 禁用一个目录的 STIKY 位
 
-## 打包和解压缩文件的命令
+### 打包和解压缩文件的命令
 
 bunzip2 file1.bz2 解压一个叫做 'file1.bz2'的文件
 
@@ -267,7 +268,7 @@ zip -r file1.zip file1 file2 dir1 将几个文件和目录同时压缩成一个z
 
 unzip file1.zip 解压一个zip格式压缩包
 
-## 关于RPM 包的命令
+### 关于RPM 包的命令
 
 rpm -ivh package.rpm 安装一个rpm包
 
@@ -319,7 +320,7 @@ rpm -ivh /usr/src/redhat/RPMS/`arch`/package.rpm 从一个rpm源码安装一个�
 
 rpmbuild --rebuild package_name.src.rpm 从一个rpm源码构建一个 rpm 包
 
-## YUM 软件包升级器
+### YUM 软件包升级器
 
 yum install package_name 下载并安装一个rpm包
 
@@ -340,3 +341,45 @@ yum clean packages 清理rpm缓存删除下载的包
 yum clean headers 删除所有头文件
 
 yum clean all 删除所有缓存的包和头文件
+
+## CentOS目录结构
+CentOS的目录大体上可分为四类：管理类、用户类、应用程序类、信息类文件目录。
+
+### 管理类目录：
+       /boot linux 的内核及引导系统程序所需要的文件目录
+       /bin 存放标准 linux 的工具，在终端里输入ls，系统就系统将会到该目录查看是否存在该命令程序。
+       /sbin 大多是涉及系统管理的命令的存放，是超级权限用户root的可执行命令存放地，普通用户无权限执行这个目录下的命令
+       /var 这个目录的内容是经常变动的，用来存储经常被修改的文件，如日志、数据文件、邮箱等
+       /etc 主要存放系统配置方面的文件
+       /dev 主要存放与设备有关的文件
+       /mnt 这个目录一般是用于存放挂载储存设备的挂载目录的，比如有cdrom 等目录。可以参看/etc/fstab的定义
+
+### 用户类目录：
+       /root 系统管理员目录
+       /home 主要存放个人数据
+
+### 应用程序类目录：
+       /lib 该目录用来存放系统动态链接共享库，几乎所有的应用程序都会用到该目录下的共享库
+       /tmp 临时目录，有些linux会定期清理
+       /usr 存放一些不适合放在/bin 或 /etc 目录下的额外工具，如个人安装的程序或工具
+              /usr/local 主要存放那些手动安装的软件，
+              /usr/bin 用于存放程序
+              /usr/share 用于存放一些共享数据
+              /usr/lib 存放一些不能不能直接运行，但却是许多程序运行所必需的一些函数库文件
+       /opt 主要存放可选程序，直接删除程序不影响系统其设置。安装到/opt目录下的程序，它所有的数据、库文件等等都是放在同个目录下面
+
+### 信息类目录：
+       /lost+found 在ext2或ext3文件系统中，当系统意外崩溃或机器意外关机，而产生一些文件碎片放在这里。但当突然停电、或者非正常关机后，有些文件就临时存放在这里。
+       /proc 操作系统运行时，进程信息及内核信息（比如cpu、硬盘分区、内存信息等）存放在这里
+
+### 其他重要目录：
+       /etc/rc.d            放置开机和关机的脚本。
+       /etc/rc.d/init.d     放置启动脚本
+       /etc/xinetd.d        配置xinetd.conf可以配置启动其他额外服务。
+       /usr/include         一些distribution套件的头文件放置目录，安装程序时可能会用到。
+       /usr/lib             套件的程序库
+       /usr/local           默认的软件安装目录。
+       /usr/share/doc       系统说明文件的放置目录
+       /usr/share/man       程序说明文件放置目录
+       /usr/src             内核源代码目录
+       /usr/X11R6           X的存放目录

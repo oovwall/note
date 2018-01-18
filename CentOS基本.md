@@ -32,6 +32,8 @@ hdparm -i /dev/hda 罗列一个磁盘的架构特性
 
 hdparm -tT /dev/sda 在磁盘上执行测试性读取操作
 
+cat /etc/redhat-release 查看当前操作系统发行版本信息
+
 cat /proc/cpuinfo 显示CPU info的信息
 
 cat /proc/interrupts 显示中断

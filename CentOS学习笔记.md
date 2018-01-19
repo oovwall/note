@@ -7,7 +7,7 @@ Yum（全称为 Yellow dog Updater, Modified）是一个在Fedora和RedHat以及
 ### 安装Node.js
 #### 用yum安装gcc
 ```powershell
-yum -y install gcc make gcc-c++ openssl-devel wget
+[sudo] yum -y install gcc make gcc-c++ openssl-devel wget
 ```
 
 #### 安装Node.js v9.4.0
@@ -19,8 +19,8 @@ cd /usr/src
 2. 从Node.js的站点中获取压缩档源代码
 ```powershell
 wget https://nodejs.org/dist/v9.4.0/node-v9.4.0.tar.gz
-
 ```
+
 3. 然后解压提取文件
 ```powershell
 tar zxvf node-v9.4.0.tar.gz         # tar -xvfz node-v9.4.0.tar.gz 解压一个gzip格式的压缩包
@@ -44,6 +44,7 @@ make install
 1. 配置包管理系统（yum）：创建一个`/etc/yum.repos.d/mongodb-org-3.6.repo`文件，这样你就可以直接使用yum来安装MongoDB。
 ```powershell
 cd /etc/yum.repos.d
+yum -y install vim              # 安装vim，如果已完装则跳过该步骤
 vi mongodb-org-3.6.repo         # 进入vi的一般模式
 # 在一般模式之中，只要按下 i, o, a 等字符就可以进入输入模式了！
 # 在编辑模式当中，你可以发现在左下角状态栏中会出现 –INSERT- 的字样，那就是可以输入任意字符的提示。
@@ -61,16 +62,16 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
 
 2. 安装MongoDB服务器：
 ```powershell
-# yum install mongodb-org -y
+[sudo] yum install mongodb-org -y
 ```
 安装完成用`mongod --version`查看版本
 
 3. MongoDB的基本操作：
 ```powershell
-service mongod start            # 启动MongoDB
-service mongod stop             # 停止MongoDB
-service mongod restart          # 重启MongoDB
-mongo                           # MongoDB shell
+[sudo] service mongod start            # 启动MongoDB
+[sudo] service mongod stop             # 停止MongoDB
+[sudo] service mongod restart          # 重启MongoDB
+mongo                                  # MongoDB shell
 ```
 
 
@@ -82,6 +83,32 @@ mongo                           # MongoDB shell
 4. 输入`yum install ibus ibus-table-wubi`安装极点五笔输入法，并且在执行过程中键入`y`确认下载和安装。
 5. 安装成功后，键入`exit`退出root帐号，然后再关闭终端窗口。
 6. 在`设置 > 区域和语言`中添加输入源。如果没有出现五笔则重启CentOS。
+
+### CentOS网络工具
+#### netstat
+##### 安装
+```powershell
+[sudo] yum install net-tools -y
+```
+
+##### 用例
+列出所有端口
+```powershell
+netstat -ntlp
+```
+
+#### lsof
+##### 安装
+```powershell
+[sudo] yum install lsof -y
+```
+
+##### 用例
+查看80端口占用情况使用
+```powershell
+lsof -i tcp:80
+```
+
 
 ## Hyper-v相关
 虚拟机和系统之前鼠标切换用：`ctrl + alt + ← `

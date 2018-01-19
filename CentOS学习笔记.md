@@ -116,3 +116,4 @@ lsof -i tcp:80
 ## 相关链接
 - [CentOS 7部署Node.js+MongoDB：在VPS上从安装到Hello world](http://blog.csdn.net/azureternite/article/details/52349326)
 - [CentOS 新建、删除、移动、复制等命令](http://blog.csdn.net/lpdx111/article/details/16877725)
+- [vim常用命令总结](https://www.cnblogs.com/yangjig/p/6014198.html)

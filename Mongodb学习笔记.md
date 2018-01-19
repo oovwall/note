@@ -43,11 +43,14 @@ $ mongo
 
 ### MongoDB Shell下操作数据库
 ```sql
+> help                      -- MongoDB命令帮助，可以直接输入help 
 > use DATABASE_NAME         -- 如果数据库不存在则创建数据库，否则切换到指定数据库
 > db                        -- 查看当前数据库名
 > db.dropDatabase()         -- 删除数据库
 > show dbs                  -- 查看所有数据库
 
+> show collections                      -- 查看当前数据库中所有集合
+> db.help()                             -- 查看数据中支持哪些方法
 > db.COLLECTION_NAME.find()             -- 查看集合
 > db.COLLECTION_NAME.find().pretty()    -- 查看集合
 > db.COLLECTION_NAME.drop()             -- 删除集合
@@ -255,3 +258,6 @@ const removeDocuments = function (db, callback) {
   })
 }
 ```
+
+## 相关链接
+- [MongoDb 命令查询所有数据库列表](http://blog.csdn.net/u010305706/article/details/48129131)

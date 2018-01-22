@@ -24,6 +24,8 @@ $ git config --global user.email myemail@qq.com
 ## Git常用命令
 ```powershell
 $ git checkout .            # 本地所有修改的。没有的提交的，都返回到原来的状态
+
+$ git reset --hard          # 重置暂存区与工作区，与上一次commit保持一致
 ```
 
 ## 相关链接

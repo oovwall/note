@@ -11,8 +11,5 @@ $ ng new auction
 ```
 
 ## 组件相关的概念
-```sequence
-装饰器 @Component()->Component
-模板 Template->Component
-控制器 Controller->Component
-```
+![Angular组件相关的概念](https://s1.ax2x.com/2018/01/23/sJPgN.png)
+

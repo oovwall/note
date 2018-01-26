@@ -134,6 +134,10 @@ export class ProductComponent implements OnInit {
 新建router项目
 ```powershell
 $ ng new router --routing
+$ npm install
+$ ng g component home               # 创建导航组件
+$ ng g component product            # 创建产品组件
+$ ng g component code404            # 创建404组件
 ```
 
 **app-routing.module.ts**
@@ -265,3 +269,51 @@ export class AppComponent {
   商品id是：{{productId}}
 </p>
 ```
+
+##### 重定向路由
+**app-routing.module.ts**
+```typescript
+const routes: Routes = [
+  {path: '', redirectTo: '/home', pathMatch: 'full'}
+];
+```
+
+##### 子路由
+新建两个新的组件
+```powershell
+$ ng g component productDesc
+$ ng g component sellerInfo
+```
+
+配置路由
+```typescript
+const routes: Routes = [
+  {path: 'product/:id', component: ProductComponent, children: [
+      {path: '', component: ProductDescComponent},
+      {path: 'seller/:id', component: SellerInfoComponent},
+    ]}
+];
+```
+
+##### 辅助路由
+一个组件上有多个outlet
+**概览**
+```html
+<a [routerLink]="['/home', { outlets: { aux: 'xxx' }}]">链接一</a>
+<a [routerLink]="['/product', { outlets: { aux: 'yyy' }}]">链接二</a>
+<router-outlet></router-outlet>
+<router-outlet name="aux"></router-outlet>
+```
+
+```typescript
+const routes: Routes = [
+  {path: 'xxx', component: XxxComponent},
+  {path: 'yyy', component: YyyComponent}
+];
+```
+
+**回归到router实例**  
+**思路**
+1. 在app组件的模板上再定义一个插座来显示聊天面板。
+2. 单独开发一个聊天室组件，只显示在定义的插座上。
+3. 通过路由参数控制新插座是否显示聊天面板。

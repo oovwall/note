@@ -120,7 +120,7 @@ export class ProductComponent implements OnInit {
 ```
 
 #### 路由
-路由对象
+**路由对象**
 
 | 名称 | 简介 |
 |----|----|
@@ -131,7 +131,12 @@ export class ProductComponent implements OnInit {
 | ActivatedRoute | 当前激活的路由的对象，保存着当前路由的信息，如路由地址，路由参数等。 |
 
 ##### 路由实例 router
-app-routing.module.ts
+新建router项目
+```powershell
+$ ng new router --routing
+```
+
+**app-routing.module.ts**
 ```typescript
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -140,7 +145,7 @@ const routes: Routes = [
 ];
 ```
 
-app.component.html
+**app.component.html**
 ```html
 <a [routerLink]="['/']">主页</a>
 <a [routerLink]="['/product']">商品详情</a>
@@ -149,7 +154,7 @@ app.component.html
 ```
 
 
-app.component.ts
+**app.component.ts**
 ```typescript
 export class AppComponent {
   title = 'app';
@@ -164,15 +169,99 @@ export class AppComponent {
 }
 ```
 
-在路由时传递数据
+##### 在路由时传递数据
 
-        在查询参数中传递数据
+        1. 在查询参数中传递数据
         /product?id=1&name=2   =>   ActivatedRoute.queryParams[id]
-        在路由路径中传递数据
+        
+        2. 在路由路径中传递数据
         { path:/product/:id }   =>   /product/1   =>   ActivatedRoute.params[id]
-        在路由配置中传递数据
+        
+        3. 在路由配置中传递数据
         {
           path: /product,
           component: ProductComponent,
           data: [{ isProd: true }]
         }                      =>   ActivatedRoute.data[0][isProd]
+
+1. 在查询参数中传递数据
+
+**app.component.html**
+```html
+<a [routerLink]="['/product']" [queryParams]="{ id: 1 }">商品详情</a>
+```
+
+商品详情组件里接收参数  
+**product.component.ts**
+```typescript
+export class ProductComponent implements OnInit {
+
+  private productId: Number;
+
+  // 获得ActivatedRoute参数
+  constructor(private routeInfo: ActivatedRoute) {  }
+
+  ngOnInit() {
+    this.productId = this.routeInfo.snapshot.queryParams['id'];
+  }
+
+}
+```
+**product.component.html**
+```html
+<p>
+  商品id是：{{productId}}
+</p>
+```
+
+2. 在路由路径(url)中传递数据
+ - 修改路由中的path属性  
+**app-routing.module.ts**
+```typescript
+const routes: Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'product/:id', component: ProductComponent},
+  {path: '**', component: Code404Component}
+];
+```
+
+- 修改路由链接的参数来传递数据
+**app.component.html**
+```html
+<a [routerLink]="['/product', 1]">商品详情</a>
+```
+
+商品详情组件里接收参数  
+**product.component.ts**
+```typescript
+export class ProductComponent implements OnInit {
+  ...
+
+  ngOnInit() {
+    // 参数订阅
+    this.routeInfo.params.subscribe((params: Params) => this.productId = params['id']);
+      
+    // 参数快照（组件内部跳转不会改变组件内部变量）
+    // this.productId = this.routeInfo.snapshot.params['id'];
+  }
+
+}
+```
+
+**app.component.ts**
+```typescript
+export class AppComponent {
+  ...
+
+  toProductDetails() {
+    this.router.navigate(['/product', 2]);
+  }
+}
+```
+
+**product.component.html**
+```html
+<p>
+  商品id是：{{productId}}
+</p>
+```

@@ -317,3 +317,40 @@ const routes: Routes = [
 1. 在app组件的模板上再定义一个插座来显示聊天面板。
 2. 单独开发一个聊天室组件，只显示在定义的插座上。
 3. 通过路由参数控制新插座是否显示聊天面板。
+
+新建聊天组件
+```powershell
+$ ng g component chat
+```
+
+**product.component.html**
+```html
+<a [routerLink]="[{ outlets: {aux: 'chat'}}]">开始聊天</a>
+<a [routerLink]="[{ outlets: {aux: null}}]">结束聊天</a>
+
+<!--
+<a [routerLink]="[{ outlets: {primary:'home', aux: 'chat'}}]">开始聊天</a>
+如果加入primary属性，则可以指定主路由跳转到指定页
+-->
+
+<router-outlet name="aux"></router-outlet>
+```
+
+**app-routing.module.ts**
+```typescript
+const routes: Routes = [
+  {path: 'chat', component: ChatComponent, outlet: 'aux'},
+];
+```
+
+##### 路由守卫
+使用场景
+- 当用户已经登录并拥有某些权限时才能进入某些路由。
+- 一个由多个表单组件组成的向导，例如注册流程，用户只有在当前路由的组件中填写了满足要求的信息才可以导航到下一个路由。
+- 当用户未执行保存操作而试图离开当前导航时提醒用户。
+
+| 路由守卫 |  |
+| ---- | ---- |
+| CanActivate | 处理导航到某路由的情况 |
+| CanDeactivate | 处理从当前路由离开的情况 |
+| Resolve | 在路由激活之前获取路由数据。 |

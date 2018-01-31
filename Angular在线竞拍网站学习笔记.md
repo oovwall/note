@@ -354,3 +354,58 @@ const routes: Routes = [
 | CanActivate | 处理导航到某路由的情况 |
 | CanDeactivate | 处理从当前路由离开的情况 |
 | Resolve | 在路由激活之前获取路由数据。 |
+
+**src/app/guard/login.guard.ts**
+```typescript
+import {CanActivate} from '@angular/router';
+
+export class LoginGuard implements CanActivate {
+  canActivate () {
+    const loggedIn: boolean = Math.random() < 0.5;
+
+    if (!loggedIn) {
+      console.log('用户未登录');
+    }
+
+    return loggedIn;
+  }
+}
+```
+
+**src/app/guard/unsaved.guard.ts**
+```typescript
+import {CanDeactivate} from '@angular/router';
+import {ProductComponent} from '../product/product.component';
+
+export class UnsavedGuard implements CanDeactivate<ProductComponent> {
+  canDeactivate(component: ProductComponent) {
+    return window.confirm('你还没有保存，确定要离开么？');
+  }
+}
+```
+**app-routing.module.ts**
+```typescript
+const routes: Routes = [
+  {
+    path: 'product/:id', 
+    component: ProductComponent, 
+    children: [
+      {path: '', component: ProductDescComponent},
+      {path: 'seller/:id', component: SellerInfoComponent},
+    ],
+    
+    // 为该组件指定守卫路由
+    canActivate: [LoginGuard],
+    canDeactivate: [UnsavedGuard]
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+  providers: [LoginGuard, UnsavedGuard]
+})
+```
+
+##### resolve守卫
+

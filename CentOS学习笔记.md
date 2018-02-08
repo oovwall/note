@@ -3,6 +3,13 @@
 ## yum
 Yum（全称为 Yellow dog Updater, Modified）是一个在Fedora和RedHat以及CentOS中的Shell前端软件包管理器。基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包，无须繁琐地一次次下载、安装
 
+## Mac终端使用SSH远程连接到Linux服务器
+1. 在Dock的终端上点击右键 > 新建远程连接... 
+2. 选择安全Shell（ssh），在右边的方框下点击+号输入服务器的IP，如图：
+![](https://ws2.sinaimg.cn/large/006tNc79gy1fo91axi8iwj30ne0nmtbu.jpg?aN4syttKemFMRef)
+3. 点击确认后点击下面的连接按钮，在终端窗口弹出的提示中输入yes，然后输入密码，连接成功！
+
+
 ## CentOS部署Node.js程序
 ### 安装Node.js
 #### 用yum安装gcc

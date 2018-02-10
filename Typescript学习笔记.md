@@ -478,6 +478,7 @@ class Tiger implements Animal {
 #### 模块(Module)
 模块可以帮助开发者将代码分割为可重用的单元。开发者可以自己决定将模块中的哪些资源（类、方法、变量）暴露出去供外部使用，哪些资源只在模块内使用。
 > 模块在typescript里就是一个文件，一个文件是一个模块，在模块的内部有两个关键字来支撑模块的特性export和import
+
 **a.ts**
 ```typescript
 export const prop1 = 1;

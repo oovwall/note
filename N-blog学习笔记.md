@@ -17,6 +17,11 @@ npm i -g supervisor
 
 
 ### ejs模板引擎
+ejs模板引擎安装
+```powershell
+npm i ejs --save
+```
+
 - <% code %>：运行 JavaScript 代码，不输出
 - <%= code %>：显示转义后的 HTML内容
 - <%- code %>：显示原始 HTML 内容

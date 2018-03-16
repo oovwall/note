@@ -7,6 +7,8 @@ semver 格式：主版本号.次版本号.修订号。版本号递增规则如�
 - 次版本号：做了向下兼容的功能性新增
 - 修订号：做了向下兼容的 bug 修正
 
+npm version [ major | minor | patch ]
+
 ### supervisor
 supervisor会监听当前目录下node和js后缀文件，当这些文件发生改动时，supervisor会自动重启程序
 

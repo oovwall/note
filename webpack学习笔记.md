@@ -190,3 +190,41 @@ $ npm install webpack-cli --save-dev
       ```
       运行`npm run build`后，打开index.html文件，可以看到背景图片已经显示，而图片的url已经被改成以哈希值命名的文件名。
       
+   3. 加载字体
+      
+      webpack.config.js
+      ```
+      const path = require('path');
+      
+      module.exports = {
+        entry: './src/index.js',
+        output: {
+          filename: 'bundle.js',
+          path: path.resolve(__dirname, 'dist')
+        },
+        module: {
+          rules: [
+            {
+              test: /\.css$/,
+              use: [
+                'style-loader',
+                'css-loader'
+              ]
+            },
+            {
+              test: /\.(png|svg|jpg|gif)$/,
+              use: [
+                'file-loader'
+              ]
+            },
+            {
+              test: /\.(woff|woff2|eot|ttf|otf)$/,
+              use: [
+                'file-loader'
+              ]
+            }
+          ]
+        }
+      };
+      ```
+   

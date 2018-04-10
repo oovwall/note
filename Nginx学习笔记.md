@@ -26,9 +26,40 @@ brew cleanup [] 		# 删除某个程序
 ```
 
 ## 安装Nginx
+### Mac安装Nginx
 ``` powershell
 $ brew install nginx
 ```
+
+### CentOS安装Nginx
+1. 安装`nginx`
+    ```powershell
+    $ cd /usr/src 
+    $ wget http://nginx.org/download/nginx-1.13.11.tar.gz       # 下载nginx
+    $ tar zxvf nginx-1.13.11.tar.gz                             # 解压
+    $ cd nginx-1.13.11
+    $ ./configure               # 配置
+    $ make                      # 编译
+    $ make install              # 安装
+    ```
+2. 启动并校验`nginx`安装情况
+   ```powershell
+   $ cd /usr/local/nginx/sbin
+   $ ./nginx                    # 启动
+   $ ps -ef | grep nginx        # 查看nginx进程，如果存在则安装成功
+   ```
+3. 如果无法在终端使用`nginx`命令，则需配置环境变量
+   ```powershell
+   vi /etc/profile
+   ```
+   
+   在`/etc/profile`文件末尾添加下面两行代码，按`Esc`键输入`:wq`保存退出
+   ```
+   PATH=$PATH:/usr/local/nginx/sbin
+   export PATH
+   ```
+   输入`reboot`重启服务器生效。
+   
 
 ## 使用
 ``` powershell

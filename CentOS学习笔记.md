@@ -83,7 +83,7 @@ mongo                                  # MongoDB shell
 
 ## CentOS部署vue-cli构建工具程序
 ### 部署前准备
-1. 安装必要的软件，参考上面的[CentOS部署Node.js程序](#CentOS部署Node.js程序)
+1. 安装必要的软件，参考上面的[CentOS部署Node.js程序](#centos部署nodejs程序)
 2. 安装Node.js
 3. 安装Git
     ```powershell

@@ -81,6 +81,87 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
 mongo                                  # MongoDB shell
 ```
 
+## CentOS部署vue-cli构建工具程序
+### 部署前准备
+1. 安装必要的软件，参考上面的[CentOS部署Node.js程序](#CentOS部署Node.js程序)
+2. 安装Node.js
+3. 安装Git
+    ```powershell
+    $ yum install git
+    ```
+4. 用`git clone`项目文件
+### 启动服务
+#### 用`http-server`启动
+1. 安装 `http-server`
+    ```powershell
+    $ npm install http-server -g
+    ```
+2. 进入项目文件的dist目录下，运行`http-server`启动
+    ```powershell
+    $ cd /home/auto-test-vue/dist
+    $ http-server -p 8098
+    ```
+3. 这时可以通过 http://127.0.0.1:8098 访问。
+    如果其它机器不能访问则需关闭防火墙
+    ```powershell
+    $ systemctl stop firewalld.service          #停止firewall
+    $ systemctl disable firewalld.service       #禁止firewall开机启动
+    $ firewall-cmd --state      # 查看默认防火墙状态（关闭后显示notrunning，开启后显示running）
+    ```
+    
+### 用`nginx`启动
+1. 安装`nginx`
+    ```powershell
+    $ cd /usr/src 
+    $ wget http://nginx.org/download/nginx-1.13.11.tar.gz       # 下载nginx
+    $ tar zxvf nginx-1.13.11.tar.gz                             # 解压
+    $ cd nginx-1.13.11
+    $ ./configure               # 配置
+    $ make                      # 编译
+    $ make install              # 安装
+    ```
+2. 启动并校验`nginx`安装情况
+   ```powershell
+   $ cd /usr/local/nginx/sbin
+   $ ./nginx                    # 启动
+   $ ps -ef | grep nginx        # 查看nginx进程，如果存在则安装成功
+   ```
+3. 配置`nginx`静态文件访问服务
+   ```powershell
+   $ cd /usr/local/nginx/conf   # 找到配置文件
+   $ vim nginx.conf             # 修改nginx.conf文件
+   ```
+   
+   ```nginx
+   server {
+       listen       80;
+       server_name  localhost;
+
+       # ...
+
+       location / {
+           root   /home/auto-test-vue/dist;   # 修改root指向
+           index  index.html index.htm;
+       }
+       
+       # ...
+   }
+   ```
+   
+4. 按`Esc`键，输入`:wq`保存文件后，运行
+   ```powershell
+   $ cd /usr/local/nginx/sbin
+   $ ./nginx -s reload                        # 重启nginx服务器
+   ```
+   
+- nginx常用命令
+  ```powershell
+  $ cd /usr/local/nginx/sbin
+  $ ./nginx                         # 启动
+  $ ./nginx -s stop                 # 强制关闭
+  $ ./nginx -s reload               # 重启
+  ```
+
 
 ## CentOS设置相关
 ### CentOS安装五笔输入法

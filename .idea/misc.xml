@@ -5,7 +5,7 @@
     <option maxerr="50" />
   </component>
   <component name="JavaScriptSettings">
-    <option name="languageLevel" value="ES5" />
+    <option name="languageLevel" value="JSX" />
   </component>
   <component name="PreferredVcsStorage">
     <preferredVcsName>ApexVCS</preferredVcsName>

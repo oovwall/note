@@ -1,5 +1,107 @@
-[TOC]
 # Javascript知识盲点扫描
+
+[TOC]
+
+## 数组 Array
+### forEach, for...in, for, for...of 的区别
+1. forEach
+    - 声明式（不关心如何实现）
+    - 不支持 return
+```javascript
+let arr = [1, 2, 3, 4, 5]
+arr.b = '100'
+arr.forEach((item) => {
+  console.log(item)
+})
+
+// 1
+// 2
+// 3
+// 4
+// 5
+```
+
+2. for...in
+    - key 会变成字符串类型，包括数组的私有属性也可以打印出来
+```javascript
+let arr = [1, 2, 3, 4, 5]
+arr.b = '100'
+for (let key in arr) {
+  console.log(`${typeof key}:${key}`)
+}
+
+// string:0
+// string:1
+// string:2
+// string:3
+// string:4
+// string:b
+```
+
+3. for...of
+    - 支持 return
+    - 只输出数组元素（不能遍历对象）
+```javascript
+let arr = [1, 2, 3, 4, 5]
+arr.b = '100'
+for (let key of arr) {
+  console.log(`${typeof key}:${key}`)
+}
+
+// number:1
+// number:2
+// number:3
+// number:4
+// number:5
+```
+
+### Array.prototype.map()
+将原有的数组经提供的函数处理后创建一个新的数组。
+```javascript
+let arr = [1, 2, 3].map((item) => `<li>${item}</li>`)
+console.log(arr.join(''))
+
+// <li>1</li><li>2</li><li>3</li>
+```
+
+### Array.prototype.includes() 和 Array.prototype.find()
+- **Array.prototype.includes()**  
+    判断一个数组是否包含一个指定的值，返回 true 或 false
+- **Array.prototype.find()**  
+    返回数组中满足提供函数的第一个元素的值（找到即停止循环，如果没有找到则返回 undefined）
+    
+```javascript
+let arr = [1, 2, 3, 4, 55, 555]
+console.log(arr.includes(5))
+
+let result = arr.find((item) => item.toString().indexOf(5) > -1)
+console.log(result)
+
+// false
+// 55
+```
+
+### Array.prototype.reduce()
+
+
+## 对象 Object
+### Object.keys
+返回一个将对象的 key 作为新的数组的方法。
+```javascript
+let obj = {
+  school: 'mit',
+  age: '22'
+}
+console.log(Object.keys(obj))
+
+for (let val of Object.keys(obj)) {
+  console.log(obj[val])
+}
+
+// ["school", "age"]
+// mit
+// 22
+```
 
 ## Error
 自定义错误范例

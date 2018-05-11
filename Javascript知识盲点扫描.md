@@ -82,6 +82,44 @@ console.log(result)
 ```
 
 ### Array.prototype.reduce()
+reduce() 方法对累加器和数组中的每个元素（从左到右）应用一个函数，将其减少为单个值。
+
+数组求和
+```javascript
+const array1 = [1, 2, 3, 4];
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+// 1 + 2 + 3 + 4
+console.log(array1.reduce(reducer));
+
+// 10
+```
+
+将二维数组转化为一维
+```javascript
+const flattened = [[0, 1], [2, 3], [4, 5]].reduce(
+ ( acc, cur ) => acc.concat(cur),
+ []
+);
+
+// [0, 1, 2, 3, 4, 5]
+```
+
+计算数组中每个元素出现的次数
+```javascript
+const names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
+
+const countedNames = names.reduce(function (allNames, name) { 
+  if (name in allNames) {
+    allNames[name]++;
+  } else {
+    allNames[name] = 1;
+  }
+  return allNames;
+}, {});
+// countedNames is:
+// { 'Alice': 2, 'Bob': 1, 'Tiff': 1, 'Bruce': 1 }
+```
 
 
 ## 对象 Object

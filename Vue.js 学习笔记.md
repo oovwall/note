@@ -1,5 +1,6 @@
 # Vue.js 学习笔记
 
+## Vue.js Fundamentals
 ### 第二课：入门
 
 **`javascript`**
@@ -124,8 +125,69 @@ var app = new Vue({
 **`@click`**
 **`methods`**
 
-
 ### 第八课 **`computed`**
 
 ### 第九课 Getter & Setter
  
+## 其它课程笔记
+### 列表删除某一项元素
+```vuejs
+new Vue({
+  el: '#app',
+  method: {
+    remove(todo) {
+      this.todos = this.todos.filter(item => item !== todo)
+    }
+  }
+})
+```
+
+### 自定义指令
+```vue
+<template>
+  <div id="app">
+    <div v-color="flag">变色</div>
+    <div v-drag>拖我</div>
+  </div>
+</template>
+
+<script>
+let app = new Vue({
+  directives: {
+    color(el, bindings) {
+      el.style.background = bindings.value
+    },
+    drag(el) {
+      el.onmousedown = function(e) {
+        let disx = e.pageX - el.offsetLeft
+        let disx = e.pageY - el.offsetTop
+        
+        document.onmousemove = function(e) {
+          el.style.left = e.pageX - disx + 'px'
+          el.style.top = e.pageY - disy + 'px'
+        }
+        
+        document.onmouseup = function() {
+          document.onmousemove = document.onmouseup = null
+        }
+        
+        e.preventDefault()
+      }
+    }
+  },
+  data: {
+    flag: 'red'
+  }
+})
+</script>
+
+<style scoped>
+  .flag {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    color: lightseagreen;
+  }
+</style>
+```
+

@@ -141,6 +141,11 @@ for (let val of Object.keys(obj)) {
 // 22
 ```
 
+## 如何更改 this 指向
+1. call, apply, bind
+2. let that = this
+3. =>
+
 ## Error
 自定义错误范例
 ```javascript

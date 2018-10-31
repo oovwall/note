@@ -1,5 +1,49 @@
 # Vue.js 学习笔记
 
+## Vue CLI相关笔记
+### @vue/cli 3.x
+#### 安装
+```powershell
+npm install -g @vue/cli
+```
+
+#### 初始化项目
+```powershell
+vue create project-name
+```
+
+#### 现有项目中安装插件（如ESLint, vue-router, vuex）等
+```powershell
+vue add @vue/eslint
+vue add router
+vue add vuex
+```
+
+#### package.json里的ESLint配置
+```json
+{
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/standard"
+    ],
+    "rules": {
+      "generator-star-spacing": "off",
+      "no-debugger": "off",
+      "no-console": "off",
+      "indent": 0
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  }
+}
+```
+
 ## Vue.js Fundamentals
 ### 第二课：入门
 

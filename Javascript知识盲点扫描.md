@@ -303,18 +303,26 @@ btn.attachEvent('onclick', function () {
 let promise = new Promise((resolve, reject) => {
   // 构造函数中的参数是一个函数，该函数生成成功或失败的状态，由实例promise去设定成功或失败的回调函数
 
-  console.log('Promise')
-  resolve()     // 如果替换成reject()则输出failure
+  console.log('Promise run')
+  // resolve('RESOLVE')		// 成功resolve方法
+  reject('REJECT')		// 失败reject方法
   
 })
 
-promise.then(() => {
-  console.log('success')
-}, () => {
-  console.log('failure')
+promise.then((res) => {
+  console.log(res)
+}, (err) => {
+  // 如果promise内的程序出错，则会自动执行此条
+  console.log(err)
 })
 
-console.log('HI')
+console.log('PROGRAMING')
+
+/* 输出
+Promise run
+PROGRAMING
+REJECT
+*/
 ```
 
 一般来说，不要在then方法里面定义 Reject 状态的回调函数（即then的第二个参数），总是使用catch方法。
@@ -337,6 +345,22 @@ promise
   });
 ```
 一般总是建议，Promise 对象后面要跟catch方法，这样可以处理 Promise 内部发生的错误。catch方法返回的还是一个 Promise 对象，因此后面还可以接着调用then方法。
+
+## async函数
+```javascript
+// async函数返回一个Promise对象
+async function getA () {
+  // throw new Error('对不起')   // 如果函数体内有错，会被catch捕捉到
+  return '成功'   // return 出的内容就是成功回调的参数
+}
+
+getA().then((res) => {
+  console.log(res)
+}).catch((err) => {
+  console.log(err)
+})
+
+```
 
 ## CommonJS规范
 CommonJS每个文件就是一个模块，有自己的作用域。在一个文件里面定义的变量、函数、类，都是私有的，对其他文件不可见。
@@ -395,3 +419,14 @@ Object.keys(require.cache).forEach(function(key) {
   delete require.cache[key];
 })
 ```
+
+## 控制台
+
+###  
+
+打印出该对象的所有属性和属性值
+
+```javascript
+console.dir(Promise)
+```
+

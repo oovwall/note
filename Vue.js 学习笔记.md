@@ -45,7 +45,27 @@ vue add vuex
 ```
 
 ### 项目架构相关内容
-- 
+#### 散装知识
+- router-link 设置tag属性
+```vue
+<router-link tag="li" :to="/url"></router-link>
+```
+
+- vue监听路由变化
+```vuejs
+new Vue({
+  watch: {
+    $route () {
+      // code
+    }
+  }
+})
+```
+
+- 判断是否为空对象
+```javascript
+Object.keys(obj).length > 0
+```
 
 
 ## Vue.js Fundamentals

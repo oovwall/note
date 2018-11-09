@@ -67,6 +67,38 @@ new Vue({
 Object.keys(obj).length > 0
 ```
 
+- map() 新用法
+```javascript
+let books = ['vue', 'react', 'angularjs']
+books.map(item => {
+  if (item === 'angularjs') {
+    return 'angular'      // 查到相同条件的item，替换该条件的内容
+  }
+  return item             // 返回此item
+})
+
+/* 输出
+["vue", "react", "angular"]
+*/
+```
+
+- 多个接口同时发请求，用axios.all()
+```javascript
+// 执行多个并发请求
+// api
+export let getAll = () => {
+  return axios.all([func1(), func2()])
+}
+
+// 调用页面
+async getData () {
+  let [v1, v2] = await getAll()
+  
+  // 操作
+  this.v1 = v1
+  this.v2 = v2
+}
+```
 
 ## Vue.js Fundamentals
 ### 第二课：入门

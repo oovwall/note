@@ -100,6 +100,53 @@ async getData () {
 }
 ```
 
+- keep-alive 页面缓存应用
+```javascript
+const routes = [
+  {
+    path: '/main',
+    component: Main,
+    meta: {
+      keepAlive: true
+    }
+  }
+]
+```
+
+```vue
+<keep-alive>
+    <!--缓存的router-->
+    <router-view v-if="$route.meta.keepAlive"/>
+</keep-alive>
+<router-view v-if="!$route.meta.keepAlive"/>
+```
+
+- 为每个页面更改网页<title>；路由拦截
+```javascript
+const routes = [
+  {
+    path: '/main',
+    component: Main,
+    meta: {
+      title: '首页'
+    }
+  }
+]
+
+router.beforeEach((to, from, next) => {
+  // 为每个页面更改网页<title>
+  document.title = to.meta.title
+  
+  // 路由拦截
+  if (to.path === '/list') {
+    next({ path: '/add' })
+  } else {
+    next()
+  }
+})
+```
+
+
 ## Vue.js Fundamentals
 ### 第二课：入门
 

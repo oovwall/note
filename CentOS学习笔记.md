@@ -197,6 +197,14 @@ netstat -ntlp
 lsof -i tcp:80
 ```
 
+## SSR
+1. 进入系统，输入：
+    ```powershell
+    wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh && chmod +x ssr.sh && bash ssr.sh
+    ```
+1. 在之后的ShadowsocksR 一键管理脚本中选择1，安装 ShadowsocksR  
+![JYHDYF.png](http://ww1.sinaimg.cn/large/986fbeb1gy1fyk6utjaz3j20cw0c3gm1)
+1. 之后默认下一步即可
 
 ## Hyper-v相关
 虚拟机和系统之前鼠标切换用：`ctrl + alt + ← `

@@ -148,82 +148,82 @@ router.beforeEach((to, from, next) => {
 
 - Element UI传统方式提交带文件表单
   1. 方法一：自写方法用axios发送提交表单
-  ```vue
-  <template>
-    <el-upload
-      ref="upload"
-      action="/api/cgFinance/cgt/user/saveFile"
-      :limit="1"
-      :on-change="selectFile"
-      :auto-upload="false">
-      <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-      <div slot="tip" class="el-upload__tip">只能上传zip文件</div>
-    </el-upload>
-  </template>
-  
-  <script>
-  export default {
-    methods: {
-      selectFile (file) {
-        this.form2.file = file.raw
-      },
-      async postFileToBank () {
-        let formData = new FormData()
-        formData.append('userId', this.form2.userId)
-        formData.append('email', this.form2.email)
-        formData.append('file', this.form2.file)
-  
-        let { data } = await postFileToBank(formData)
-        if (data.code === 200) {
-          this.$notify.success({
-            message: data.msg
-          })
-        } else if (data.code === 401 || data.code === -100) {
-          redirectLogin(this, data.msg)
-        } else {
-          this.$notify.error({
-            message: data.msg
-          })
+      ```vue
+      <template>
+        <el-upload
+          ref="upload"
+          action="/api/cgFinance/cgt/user/saveFile"
+          :limit="1"
+          :on-change="selectFile"
+          :auto-upload="false">
+          <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
+          <div slot="tip" class="el-upload__tip">只能上传zip文件</div>
+        </el-upload>
+      </template>
+
+      <script>
+      export default {
+        methods: {
+          selectFile (file) {
+            this.form2.file = file.raw
+          },
+          async postFileToBank () {
+            let formData = new FormData()
+            formData.append('userId', this.form2.userId)
+            formData.append('email', this.form2.email)
+            formData.append('file', this.form2.file)
+
+            let { data } = await postFileToBank(formData)
+            if (data.code === 200) {
+              this.$notify.success({
+                message: data.msg
+              })
+            } else if (data.code === 401 || data.code === -100) {
+              redirectLogin(this, data.msg)
+            } else {
+              this.$notify.error({
+                message: data.msg
+              })
+            }
+          }
         }
       }
-    }
-  }
-  </script>
-  ```
+      </script>
+      ```
 
   1. 方法二：用`el-upload`组件自带的小form带上其它属性值一起提交。
-  ```vue
-  <el-upload
-    ref="file"
-    action="/api/cgFinance/cgt/user/saveFile"
-    :headers="{
-      token: token
-    }"
-    :data="{
-      email: this.form2.email,
-      userId: this.form2.userId
-    }"
-    :on-success="success"
-    :limit="1"
-    :file-list="form2.fileList"
-    :auto-upload="false">
-    <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-    <div slot="tip" class="el-upload__tip">只能上传zip文件</div>
-  </el-upload>
-  
-  <script>
-  export default {
-    methods: {
-      submit () {
-        this.$refs.file.submit()
-      },
-      success (res, file, fileList) {
-        // 请求成功的回调
+      ```vue
+      <el-upload
+        ref="file"
+        action="/api/cgFinance/cgt/user/saveFile"
+        :headers="{
+          token: token
+        }"
+        :data="{
+          email: this.form2.email,
+          userId: this.form2.userId
+        }"
+        :on-success="success"
+        :limit="1"
+        :file-list="form2.fileList"
+        :auto-upload="false">
+        <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
+        <div slot="tip" class="el-upload__tip">只能上传zip文件</div>
+      </el-upload>
+
+      <script>
+      export default {
+        methods: {
+          submit () {
+            this.$refs.file.submit()
+          },
+          success (res, file, fileList) {
+            // 请求成功的回调
+          }
+        }
       }
-    }
-  }
-  </script>
-  ```
+      </script>
+      ```
   
 
 ## Vue.js Fundamentals
@@ -354,7 +354,7 @@ var app = new Vue({
 ### 第八课 **`computed`**
 
 ### 第九课 Getter & Setter
- 
+
 ## 其它课程笔记
 ### 列表删除某一项元素
 ```vuejs

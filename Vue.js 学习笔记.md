@@ -226,25 +226,27 @@ router.beforeEach((to, from, next) => {
       ```
   
 - 判断传入的节点是否为该节点的后代节点
-  > 一般用来做弹出窗时点击外部关闭，在弹出窗内不关闭，弹出窗外点击页面关闭，这也是js中的Node节点知识
-  ```vuejs
-  // this.$refs.picker.contains(e.target)
-  export default {
-    methods: {
-      clickOutSide (e) {
-        if (this.pickerVisible && !this.$refs.picker.contains(e.target)) {
-            this.pickerVisible = false
-        }
+> 一般用来做弹出窗时点击外部关闭，在弹出窗内不关闭，弹出窗外点击页面关闭，这也是js中的Node节点知识
+```vue
+<script>
+// this.$refs.picker.contains(e.target)
+export default {
+  methods: {
+    clickOutSide (e) {
+      if (this.pickerVisible && !this.$refs.picker.contains(e.target)) {
+          this.pickerVisible = false
       }
-    },
-    created() {
-      document.addEventListener('mouseup', this.clickOutSide)
-    },
-    destoryed() {
-      document.removeEventListener('mouseup', this.clickOutSide)
     }
+  },
+  created() {
+    document.addEventListener('mouseup', this.clickOutSide)
+  },
+  destoryed() {
+    document.removeEventListener('mouseup', this.clickOutSide)
   }
-  ```
+}
+</script>
+```
 
 ## Vue.js Fundamentals
 ### 第二课：入门

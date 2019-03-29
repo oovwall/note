@@ -198,6 +198,7 @@ lsof -i tcp:80
 ```
 
 ## SSR
+1. 输入`sudo -i`进入root权限
 1. 进入系统，输入：
     ```powershell
     wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh && chmod +x ssr.sh && bash ssr.sh
@@ -205,6 +206,8 @@ lsof -i tcp:80
 1. 在之后的ShadowsocksR 一键管理脚本中选择1，安装 ShadowsocksR  
 ![JYHDYF.png](http://ww1.sinaimg.cn/large/986fbeb1gy1fyk6utjaz3j20cw0c3gm1)
 1. 之后默认下一步即可
+1. 输入`bash ssr.sh`，打开ShadowsocksR
+1. 选择`14`，打开**其它功能**，选择`1`配置BBR，选择`1`安装BBR，安装完成后重新启动
 
 ## Hyper-v相关
 虚拟机和系统之前鼠标切换用：`ctrl + alt + ← `

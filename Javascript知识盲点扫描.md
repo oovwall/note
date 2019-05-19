@@ -6,6 +6,7 @@
 ### forEach, for...in, for, for...of 的区别
 1. forEach
     - 声明式（不关心如何实现）
+    - 不支持 break, continue
     - 不支持 return
 ```javascript
 let arr = [1, 2, 3, 4, 5]
@@ -22,7 +23,7 @@ arr.forEach((item) => {
 ```
 
 2. for...in
-    - key 会变成字符串类型，包括数组的私有属性也可以打印出来
+    - key 会变成字符串类型，包括数组的私有属性、数组上的原型属性也可以打印出来
 ```javascript
 let arr = [1, 2, 3, 4, 5]
 arr.b = '100'
@@ -40,6 +41,7 @@ for (let key in arr) {
 
 3. for...of
     - 支持 return
+    - 支持 break, continue
     - 只输出数组元素（不能遍历对象）
 ```javascript
 let arr = [1, 2, 3, 4, 5]
@@ -53,6 +55,21 @@ for (let key of arr) {
 // number:3
 // number:4
 // number:5
+```
+
+for...of还可以支持输出数组的序号
+```javascript
+let arr = [1, 2, 3, 4, 5]
+arr.b = '100'
+for (let [index, item] of arr.entries()) {
+  console.log(`第${index}个元素是:${item}`)
+}
+
+// 第0个元素是:1
+// 第1个元素是:2
+// 第2个元素是:3
+// 第3个元素是:4
+// 第4个元素是:5
 ```
 
 ### Array.prototype.map()

@@ -49,6 +49,7 @@ origin     http://git.newaddress.com/LSD.git (fetch)
 origin     http://git.newaddress.com/LSD.git (push)
 
 $ git remote set-url origin http://git.newaddress.com/LSD.git      # 指向新的地址
+$ git remote set-url --add origin http://git.another-newaddress.com/LSD.git  # 加入另一个远程PUSH地址
 
 $ git push origin master    # 将本地git仓库push到server
 

@@ -447,3 +447,13 @@ Object.keys(require.cache).forEach(function(key) {
 console.dir(Promise)
 ```
 
+## Node.js相关
+### 从Excel中读取数据
+```javascript
+const readFilePath = './xlsx/data.xlsx'
+const XLSX = require('xlsx')
+const workbook = XLSX.readFile(readFilePath)
+
+// 把表中数据转成JSON
+const sheetJson = XLSX.utils.sheet_to_json(workbook.Sheets['Sheet1'])
+```

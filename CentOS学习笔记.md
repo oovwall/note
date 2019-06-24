@@ -209,6 +209,12 @@ lsof -i tcp:80
 1. 输入`bash ssr.sh`，打开ShadowsocksR
 1. 选择`14`，打开**其它功能**，选择`1`配置BBR，选择`1`安装BBR，安装完成后重新启动
 
+## Brook脚本
+   ```powershell
+   wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/brook.sh && chmod +x brook.sh && bash brook.sh
+   ```
+
+
 ## Hyper-v相关
 虚拟机和系统之前鼠标切换用：`ctrl + alt + ← `
 

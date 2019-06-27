@@ -44,6 +44,18 @@ vue add vuex
 }
 ```
 
+### Vue CLI相关故障解决
+- 浏览器报`Invalid Host/Origin header`问题
+  > 这是webpack本身出于安全考虑，因为不检查主机的应用程序容易受到DNS重新绑定攻击。但是，在我们的开发环境下，可以禁用掉disableHostCheck这一配置项。
+  ```
+  devServer: {
+    contentBase: resolve(__dirname, '../dist'),
+    host: '0.0.0.0',
+    disableHostCheck: true, //  新增该配置项
+    port: 4000
+  },
+  ```
+
 ### 项目架构相关内容
 #### 散装知识
 - router-link 设置tag属性

@@ -126,8 +126,8 @@ http {
       server 192.168.8.3:80  weight=6;
     }
 
-
-   server {
+   # 基本设置
+    server {
         #侦听80端口
         listen       80;
         #定义使用www.xx.com访问
@@ -176,6 +176,22 @@ http {
         #禁止访问 .htxxx 文件
         location ~ /\.ht {
             deny all;
+        }
+    }
+    
+    # 前端开发环境配置
+    server {
+        listen       80;
+        server_name  fe-admin.gialen.com;
+
+        # 后端接口请求
+        location /api/ {
+            proxy_pass http://127.0.0.1:3000;
+        }
+
+        # 前端页面配置
+        location / {
+            proxy_pass http://127.0.0.1:8081;
         }
     }
 }

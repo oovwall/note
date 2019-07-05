@@ -28,6 +28,10 @@ $ git clone https://github.com/libgit2/libgit2 mylibgit     # 克隆 Git 的可�
 $ git checkout .            # 本地所有修改的。没有的提交的，都返回到原来的状态
 
 $ git reset --hard          # 重置暂存区与工作区，与上一次commit保持一致
+
+$ git branch newBranch              # 新建newBranch分支
+$ git checkout newBranch            # 切换到该分支
+$ git checkout -b newBranch         # 创建新分支并切换到该分支上
 ```
 
 ## Git仓库迁移
@@ -53,6 +57,12 @@ $ git remote set-url --add origin http://git.another-newaddress.com/LSD.git  # �
 
 $ git push origin master    # 将本地git仓库push到server
 
+```
+
+## 本地已有文件上传到Git仓库
+```powershell
+$ git remote add origin https://git.address.com/LSD.git
+$ git push -u origin master         # git push --set-upstream origin master
 ```
 
 ## 相关链接

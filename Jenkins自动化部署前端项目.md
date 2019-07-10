@@ -44,7 +44,7 @@
    
 ## 发布配置
 ### Publish over SSH配置
-点击 `系统管理 > 系统设置`，在`Publish over SSH`处添加SSH Servers，填入对应的值。如果需要填入密码，则点击`高级...`勾选`Use password authentication, or use a different key`在`Passphase / Password`中填入密码，点击Test Configuration提示『Success』则成功
+点击 `系统管理 > 系统设置`，在`Publish over SSH`处添加SSH Servers，填入对应的值。如果需要填入密码，则点击`高级...`勾选`Use password authentication, or use a different key`在`Passphase / Password`中填入密码，点击Test Configuration提示『Success』则成功  
 ![](http://ww2.sinaimg.cn/large/006tNc79gy1g4utg6g3jqj30gd091q3g.jpg)
 
 > 值得注意的是，这里的Remote Directory 是默认的SSH地址，建立构建任务的时侯以这个目录为相对的目录。
@@ -67,7 +67,7 @@
    tar -zcvf fe-admin.tar.gz *      # 压缩
    cd ../
    ```
-1. 点击`增加构建步骤`选择**Send files or execute commands over SSH**，如图配置：
+1. 点击`增加构建步骤`选择**Send files or execute commands over SSH**，如图配置：  
    ![](http://ww1.sinaimg.cn/large/006tNc79gy1g4usqioritj30pj0kzgnd.jpg)
    Name：为之前在SSH配置那里的别名
    Source files: 相对于项目构建时的目录  

@@ -79,5 +79,9 @@
    mkdir fe-admin                           # 创建 fe-admin目录
    tar -zxvf fe-admin.tar.gz -C fe-admin/   # 解压 fe-admin.tar.gz到fe-admin文件夹
    rm -rf fe-admin.tar.gz                   # 删除 fe-admin.tar.gz
+   chmod -R 755 fe-admin                    # 更改 fe-admin目录及目录下的所有文件权限为755
    ```
 1. 点击保存，创建任务。
+
+## 相关链接
+1. [Installing Node.js via binary archive on Linux](https://github.com/nodejs/help/wiki/Installation)

@@ -32,6 +32,9 @@ $ git reset --hard          # 重置暂存区与工作区，与上一次commit�
 $ git branch newBranch              # 新建newBranch分支
 $ git checkout newBranch            # 切换到该分支
 $ git checkout -b newBranch         # 创建新分支并切换到该分支上
+
+$ git reset HEAD^           # 放弃上次提交
+$ git reset HEAD~1          # 放弃上次提交
 ```
 
 ## Git仓库迁移

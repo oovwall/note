@@ -30,6 +30,14 @@ console.log(!!123.00.toString().split('.')[1]) // false
 console.log(!!(123).toString().split('.')[1]) // false
 ```
 
+###### 字符串快速转换成数字
+```javascript
+const a = '123'
+console.log(a - 0)
+console.log(a / 1)
+console.log(a * 1)
+```
+
 ###### 数字取整
 ```javascript
 console.log(parseInt(2.3333)) // 2

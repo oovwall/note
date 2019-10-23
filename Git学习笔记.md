@@ -35,6 +35,12 @@ $ git checkout -b newBranch         # 创建新分支并切换到该分支上
 
 $ git reset HEAD^           # 放弃上次提交
 $ git reset HEAD~1          # 放弃上次提交
+
+$ git ls-remote             # 列出远程所有的分支/标签
+$ git tag                   # 列出本地所有tag
+$ git tag [tag]             # 新建一个tag在当前commit
+$ git push [remote] [tag]   # 提交指定tag
+$ git push [remote] --tags  # 提交所有tag
 ```
 
 ## Git仓库迁移

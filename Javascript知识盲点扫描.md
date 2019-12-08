@@ -2,6 +2,15 @@
 
 [TOC]
 
+## prototype
+1. 原型是什么？
+一个对象，我们也称prototype为原型对象。
+
+2. 原型的作用是什么？
+共享方法。
+
+3. 对象的 \_\_proto\_\_指向构造函数的 prototype
+
 ## 数组 Array
 ### forEach, for...in, for, for...of 的区别
 1. forEach

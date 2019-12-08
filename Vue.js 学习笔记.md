@@ -47,7 +47,7 @@ vue add vuex
 ### Vue CLI相关故障解决
 - 浏览器报`Invalid Host/Origin header`问题，见1
   > 这是webpack本身出于安全考虑，因为不检查主机的应用程序容易受到DNS重新绑定攻击。但是，在我们的开发环境下，可以禁用掉disableHostCheck这一配置项。
-- 如果想在serve的时候在console处输出你配置的域名信息，可在package.json里修改改serve命令，如：`vue-cli-service serve --public vue-admin.oovwall.com`，或更改devServer配置，见2
+- 如果想在serve的时候在console处输出你配置的域名信息，可在package.json里修改serve命令，如：`vue-cli-service serve --public vue-admin.oovwall.com`，或更改devServer配置，见2
   ```
   devServer: {
     contentBase: resolve(__dirname, '../dist'),

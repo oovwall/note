@@ -3,13 +3,37 @@
 [TOC]
 
 ## prototype
-1. 原型是什么？
+1. 原型是什么？  
 一个对象，我们也称prototype为原型对象。
 
-2. 原型的作用是什么？
+2. 原型的作用是什么？  
 共享方法。
 
 3. 对象的 \_\_proto\_\_指向构造函数的 prototype
+```javascript
+function Star () {}
+let star = new Star()
+console.log(star.__proto__ === Star.prototype) // true
+console.log(Star.prototype.__proto__ === Object.prototype) // true
+```
+
+4. 很多情况下，我们需要手动的利用constructor这个属性指回原来的构造函数
+```javascript
+function Star () {}
+
+Star.prototype = {
+  constructor: Star,
+  sing: function() {},
+  movie: function() {}
+}
+```
+
+4. 原型链
+
+![](https://tva1.sinaimg.cn/large/006tNbRwly1g9s1awfm1rj31820p27dg.jpg)
+
+5. 在构造函数中，this指向该构造函数的实例
+6. 在原型对象函数中（prototype定义的函数），this指向该构造函数的实例
 
 ## 数组 Array
 ### forEach, for...in, for, for...of 的区别
@@ -169,6 +193,7 @@ for (let val of Object.keys(obj)) {
 
 ## 如何更改 this 指向
 1. call, apply, bind
+   call
 2. let that = this
 3. =>
 

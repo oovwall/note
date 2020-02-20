@@ -44,6 +44,44 @@ vue add vuex
 }
 ```
 
+#### 环境变量管理
+1. package.json设置
+    Windows
+    ```json
+    {
+      "scripts": {
+        "serve": "vue-cli-service serve",
+        "serve:test": "set NODE_ENV=test && vue-cli-service serve",
+        "serve:production": "set NODE_ENV=production && vue-cli-service serve"
+      }
+    }
+    ```
+    
+    MacOS
+    ```json
+    {
+      "scripts": {
+        "serve": "vue-cli-service serve",
+        "serve:test": "NODE_ENV=test vue-cli-service serve",
+        "serve:production": "NODE_ENV=production vue-cli-service serve"
+      }
+    }
+    ```
+
+1. 代码
+```js
+switch (process.env.NODE_ENV) {
+  case 'production':
+    axios.defaults.baseURL = 'http://生产环境'
+    break
+  case 'test':
+    axios.defaults.baseURL = 'http://测试环境'
+    break
+  default:
+    axios.defaults.baseURL = 'http://开发环境'
+}
+```
+
 ### Vue CLI相关故障解决
 - 浏览器报`Invalid Host/Origin header`问题，见1
   > 这是webpack本身出于安全考虑，因为不检查主机的应用程序容易受到DNS重新绑定攻击。但是，在我们的开发环境下，可以禁用掉disableHostCheck这一配置项。
@@ -59,6 +97,15 @@ vue add vuex
   ```
 
 ### 项目架构相关内容
+#### 项目实际应用
+- 判断是否断网
+```js
+if (!window.navigator.onLine) {
+  // 断网了，可以让其跳转到断网页面
+  return
+}
+```
+
 #### 散装知识
 - router-link 设置tag属性
 ```vue

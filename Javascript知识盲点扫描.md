@@ -1,6 +1,12 @@
 # Javascript知识盲点扫描
 
 [TOC]
+## 数据类型
+1. NaN
+```javascript
+console.log(typeof NaN) // number
+console.log(isNaN(NaN)) // true
+```
 
 ## prototype
 1. 原型是什么？  

@@ -42,6 +42,8 @@ $ git tag [tag]             # 新建一个tag在当前commit
 $ git tag -a [tag] [commit] # 新建一个tag在指定commit
 $ git push [remote] [tag]   # 提交指定tag
 $ git push [remote] --tags  # 提交所有tag
+
+$ git push origin --delete [branch-name]    # 删除远程分支
 ```
 
 ## Git仓库迁移

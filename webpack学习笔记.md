@@ -228,3 +228,19 @@ $ npm install webpack-cli --save-dev
       };
       ```
    
+## webpack功能一览
+    - 可自动编译合并sass,less, stylus, css等样式文件
+    — 可把打包过的资源文件加入html模板
+    - 可把资源加入哈希值防止缓存
+    - 可把打包后文件加入版权信息
+    - 可根据需要打包图片，过小的图片可转化成base64格式减少请求
+    - 可启动webpack server服务器
+    - 可处理跨域问题
+    - 可定义第三方包别名
+    - 可自定义查找相关扩展名而省略输入
+    - 可用ignorePlugin优化第三方包大小
+    - 可以使用import语法tree-shaking去除不需要的代码
+
+
+## webpack相关包和插件用途
+

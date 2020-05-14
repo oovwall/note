@@ -80,9 +80,32 @@ i++
 
 
 ## ES2015 数组的解构
+```js
+const arr = [100, 200, 300]
 
+const [, , baz] = arr
+console.log(baz)  // 300
+
+const [, , , more = 'default value'] = arr
+console.log(more) // default value
+
+const path = '/foo/bar/baz'
+const [, rootdir] = path.split('/')
+console.log(rootdir) // foo
+```
 
 ## ES2015 对象的数组解构
+对象解构重命名和属性的默认值
+```js
+const obj = { name: 'zhang', age: 17 }
+const name = 'tom'
+
+const { name: objName, gander = 'male' } = obj
+const { log } = console
+
+log(objName) // zhang
+log(gander)  // male
+```
 
 ## ES2015 带标签的模板字符串
 

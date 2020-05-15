@@ -108,6 +108,34 @@ log(gander)  // male
 ```
 
 ## ES2015 带标签的模板字符串
+```js
+const name = 'zhang'
+const gender = true
+
+function myTagFunc(strings, name, gender) {
+  const sex = gender ? 'male' : 'female'
+  return strings[0] + name + strings[1] + sex + strings[2]
+}
+
+console.log(myTagFunc`hey, ${name} is ${gender}.`)
+// hey, zhang is male.
+```
+
+## ES2015 字符串的扩展方法
+用startsWith、endsWith、includes方法比indexOf更方便
+```js
+const message = 'Error: foo is not defined.'
+
+console.log(message.startsWith('Error')) // true
+console.log(message.endsWith('.')) // true
+console.log(message.includes('foo')) // true
+```
+
+## ES2015 展开数组
+```js
+const arr = ['a', 'b', 'c']
+console.log(...arr) // a b c
+```
 
 ## ES2015 Proxy
 
@@ -120,3 +148,11 @@ log(gander)  // male
 ## ES2015 Map
 
 ## ES2015 Symbol
+
+## ES2015 for...of 循环
+
+## ES2015 生成器
+
+## ES2016 概述
+
+## ES2017 概述

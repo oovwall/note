@@ -203,6 +203,31 @@ class Animal implements Eat, Run {
 ```
 
 ### 抽象类
+抽像类不能实例化，只能被继承
+```typescript
+abstract class Animal {
+  // 抽象类中可以定义抽象方法
+  abstract run (distance: number): void
+}
+
+class Dog extends Animal {
+  run(distance:number){
+    console.log(`run ${distance} meters`);
+  }
+}
+```
 
 
 ## Typescript 泛型
+泛型是指我们在定义函数、接口、类中没有指定具体的类型，等到使用的时侯才指定具体类型的特征。以函数为例：在函数声明时没有指定具体类型，等到调用时才指定具体类型，目的是最大程度复用代码
+```typescript
+function createArray<T>(length: number, value: T): T[] { // 尖括号内为泛型参数
+  return new Array(3).fill(value)
+}
+
+createArray<number>(3, 100) // [100, 100, 100]
+createArray<string>(3, 'a') // [a, a, a]
+```
+
+## Typescript 类型声明模块
+在typescript中引用第三方模块，如果模块中不包含所对应的类型声明文件，可尝试安装一个所对应的类型声明模块，类型声明模块一般是：@types/module-name，如果没有这个模块，就用declare语句声明所对应的模块类型

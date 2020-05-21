@@ -6,9 +6,9 @@
    因为在ES2015中，每个花括号中就是一个块级作用域。如果在这个作用域使用相同名称的变量必须先声明后使用。
 
 1. 
-```js
-Math.min(...[12, 34, 32, 89, 4]) // 4
-```
+  ```js
+  Math.min(...[12, 34, 32, 89, 4]) // 4
+  ```
 
 1. `var`有变量提升的作用，只要全局作用域或函数作用域中有该变量不管在什么位置都会提前声明。`let`和`const`是ES2015中才有的语法，相较于以前的js，增加了块级作用域。`const`只能声明常量，不能更改，且声明时必须初始化值。`let`用于声明变量，可以先声明后初始化。
 
@@ -21,26 +21,26 @@ Math.min(...[12, 34, 32, 89, 4]) // 4
 1. Event Loop是事件循环，它一直在任务队列中查找新的事件并执行。宏任务是在任务队列中排列的任务，setTimeout是宏任务；微任务是执行完当前任务就立即执行的任务，promise是微任务。
 
 1. 
-```js
-const greeting = function (init, str) {
-  return new Promise(((resolve, reject) => {
-    setTimeout(() => {
-      resolve( init + str)
-    }, 10)
-  }))
-}
-
-greeting('', 'Hello ')
-  .then((res) => {
-    return greeting(res, 'Lagou ')
-  })
-  .then((res) => {
-    return greeting(res, 'I love you ')
-  })
-  .then(res => {
-    console.log(res) // Hello Lagou I love you 
-  })
-```
+    ```js
+    const greeting = function (init, str) {
+      return new Promise(((resolve, reject) => {
+        setTimeout(() => {
+          resolve( init + str)
+        }, 10)
+      }))
+    }
+    
+    greeting('', 'Hello ')
+      .then((res) => {
+        return greeting(res, 'Lagou ')
+      })
+      .then((res) => {
+        return greeting(res, 'I love you ')
+      })
+      .then(res => {
+        console.log(res) // Hello Lagou I love you 
+      })
+    ```
 
 1. Typescript是javascript的超集，一些新的ECMAScript未被标准化的新特征在Typescript中先投入使用，Typescript需要编译成javascript才能变被正常运行。
 

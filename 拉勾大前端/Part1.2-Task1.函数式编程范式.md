@@ -135,3 +135,11 @@ console.log(checkAge18(24))
 
 ### 模拟函数柯里化
 
+## lodash中的fp模块
+fp模块是已经柯里化的函数
+```js
+const fp = require('lodash/fp')
+
+const f = fp.flowRight(fp.join('-'), fp.map(_.toLower), split(' '))
+```
+

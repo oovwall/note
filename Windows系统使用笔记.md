@@ -5,5 +5,7 @@
 新建 DWORD（32位）值 > 名：DisableLockWorkstation > 值：1
 
 ## Webstorm激活：
-试用期文件：C:\Users\用户名\AppData\Roaming\JetBrains\WebStorm2020.2\eval
-破解文件：https://www.789zhao.com/blog/JBZYO72PA98J.html
+- Windows试用期文件：C:\Users\用户名\AppData\Roaming\JetBrains\WebStorm2020.2\eval
+- Mac试用期文件：/Users/oovwall/Library/Application\ Support/JetBrains/WebStorm2020.2
+  > 删除eval/*.key，options/other.xml 以及其它的key文件
+- 破解文件：https://www.789zhao.com/blog/JBZYO72PA98J.html

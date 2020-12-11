@@ -8,4 +8,5 @@
 - Windows试用期文件：C:\Users\用户名\AppData\Roaming\JetBrains\WebStorm2020.2\eval
 - Mac试用期文件：/Users/oovwall/Library/Application\ Support/JetBrains/WebStorm2020.2
   > 删除eval/*.key，options/other.xml 以及其它的key文件
-- 破解文件：https://www.789zhao.com/blog/JBZYO72PA98J.html
+- 破解文件：https://www.yijingying.com/2097.html
+- 破解文件下载：https://www.lanzoux.com/b0f1c6hzc （1024）

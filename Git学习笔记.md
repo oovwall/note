@@ -46,6 +46,13 @@ $ git push [remote] --tags  # 提交所有tag
 $ git push origin --delete [branch-name]    # 删除远程分支
 ```
 
+## 生成SSH密钥
+```powershell
+$ ssh-keygen -t rsa -C "<您的邮箱>" RSA 算法生成SSH密钥
+
+$ cat ~/.ssh/id_rsa.pub 查看是否已存在本地公钥
+```
+
 ## Git仓库迁移
 ```powershell
 $ git remote -v             # 显示所有远程仓库

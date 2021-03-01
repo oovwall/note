@@ -18,7 +18,7 @@ yarn add husky lint-staged prettier eslint eslint-config-prettier eslint-plugin-
   },
   "lint-staged": {
     "*": [
-      "yarn prettier --write ./src"
+      "yarn prettier --change --write ./src"
     ]
   }
 }
@@ -32,13 +32,20 @@ module.exports = {
     sourceType: 'module'
   },
   parser: 'vue-eslint-parser',
+  rules: {
+    endOfLine: 'auto'
+  },
   env: {
     browser: true,
     node: true,
     es6: true
   },
-  extends: ['plugin:prettier/recommended']
+  extends: [
+    'plugin:vue/essential',
+    'plugin:prettier/recommended'
+  ]
 }
+
 ```
 
 **.prettierrc**
@@ -51,6 +58,7 @@ module.exports = {
   "semi": false,
   "tabWidth": 2,
   "jsxSingleQuote": false,
+  "endOfLine": "auto",
   "overrides": [
     {
       "files": ".prettierrc",

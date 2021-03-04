@@ -24,7 +24,7 @@ yarn add husky lint-staged prettier eslint eslint-config-prettier eslint-plugin-
 }
 ```
 
-**eslintrc.js**
+**.eslintrc.js**
 ```js
 module.exports = {
   root: true,
@@ -73,6 +73,7 @@ module.exports = {
 # You can use .prettierignore file for ignoring any files to format, e.g:
 
 dist
+public
 .idea
 node_modules
 **/*.yml

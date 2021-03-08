@@ -4,7 +4,7 @@
 ### 使用 prettier 工具（推荐）
 #### 安装工具
 ```
-yarn add husky lint-staged prettier eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-vue vue-eslint-parser --dev
+yarn add husky@4.3.8 lint-staged prettier eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-vue vue-eslint-parser --dev
 ```
 
 #### 配置
@@ -13,7 +13,7 @@ yarn add husky lint-staged prettier eslint eslint-config-prettier eslint-plugin-
 {
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged --allow-empty"
     }
   },
   "lint-staged": {
@@ -33,7 +33,8 @@ module.exports = {
   },
   parser: 'vue-eslint-parser',
   rules: {
-    endOfLine: 'auto'
+    endOfLine: 'off',
+    indent: ['off', 2]
   },
   env: {
     browser: true,
@@ -56,6 +57,7 @@ module.exports = {
   "printWidth": 140,
   "bracketSpacing": true,
   "semi": false,
+  "arrowParens": "avoid",
   "tabWidth": 2,
   "jsxSingleQuote": false,
   "endOfLine": "auto",
@@ -95,7 +97,7 @@ insert_final_newline = true
 ### 使用 prettier-standard 工具
 #### 安装工具
 ```
-yarn add husky lint-staged prettier-standard --dev
+yarn add husky@4.3.8 lint-staged prettier-standard --dev
 ```
 
 #### 配置
@@ -104,25 +106,13 @@ yarn add husky lint-staged prettier-standard --dev
 {
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged --allow-empty"
     }
   },
   "lint-staged": {
     "*": [
-      "yarn prettier-standard  --changed --format"
+      "yarn prettier-standard --changed --format"
     ]
   }
 }
 ```
-
-#### 忽略选项
-.prettierignore 文件
-```ignore
-# You can use .prettierignore file for ignoring any files to format, e.g:
-
-dist
-.idea
-node_modules
-**/*.yml
-```
-

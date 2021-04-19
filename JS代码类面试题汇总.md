@@ -393,3 +393,67 @@
     ```
 
 1. **大数相加方法**
+
+## 有趣问题
+1. **中国特色的生育机率问题：如果生男孩就不再生第二胎，反之如果是女孩就生到男孩为止。求10000个家庭出生的男女比例（自己想的）**
+> 1. 令人意外的是男孩女孩的占比居然是差不多的，跟之前预想的女孩占大多数或在网上计论有人说男孩占大多数的情况完全不一样
+> 2. 如果以每一万个家庭为基数，几乎每次运行最大连生女孩数都有10个以上，如本次运行就达到了19个之多，所以有些家庭真的可能就怎么生都生不出男孩
+> 3. 如果在这其中加入条件，比如某家庭生女孩达到某个值就不再生育，对男女比例的影响也不大，只是总人口会有一定的下降
+
+```js
+function born (times) {
+  let boys = 0
+  let girls = 0
+
+  let maxGirls = 0
+  let singleBoyCount = 0
+  let multiGirlsCount = 0
+
+  while (times > 0) {
+    if (Math.floor(Math.random() * 10) < 5) {
+      girls++
+      let _maxGirls = 0
+      _maxGirls++
+
+      while (true) {
+        if (Math.floor(Math.random() * 10) < 5) {
+          girls++
+          _maxGirls++
+          _maxGirls > maxGirls && (maxGirls = _maxGirls)
+
+          // 如果有4个女孩就不再生了
+          // if (_maxGirls > 3) {
+          //   break
+          // }
+
+          // 达到5个女孩的家庭计数
+          if (_maxGirls === 5) {
+            multiGirlsCount++
+          }
+        } else {
+          boys++
+          break
+        }
+      }
+
+    } else {
+      boys++
+      singleBoyCount++
+    }
+    times--
+  }
+  console.log('girls:', girls)
+  console.log('boys:', boys)
+  console.log('max girls:', maxGirls)
+  console.log('single boy count:', singleBoyCount)
+  console.log('multi girls count:', multiGirlsCount)
+}
+
+born(10000)
+
+// girls: 10115
+// boys: 10000
+// max girls: 16
+// single boy count: 4990
+// multi girls count: 315
+```

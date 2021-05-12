@@ -47,6 +47,15 @@
 - polygon 多边形
 - text 文字
 
+### SVG基本API
+- 创建图形 
+    - document.createElementNS(ns, tagName)
+- 添加图形： 
+    - element.appendChild(childElement) 
+- 设置/获取属性： 
+    - element.setAttribute(name, value) 
+    - elememt.getAttribute(name)
+
 ### SVG的引用方式
 1. HTML5：直接写入<svg>标签
 1. 以通过 object 元素引用SVG文件：
